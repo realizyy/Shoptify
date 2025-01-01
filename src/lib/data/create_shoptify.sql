@@ -11,3 +11,13 @@ CREATE TABLE products (
   price NUMERIC(10, 2) NOT NULL,
   imageUrl VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE carts (
+  id SERIAL PRIMARY KEY,
+  user_id INTEGER NOT NULL,
+  product_id INTEGER NOT NULL,
+  quantity INTEGER NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (product_id) REFERENCES products(id)
+);
+

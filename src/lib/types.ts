@@ -22,9 +22,9 @@ export interface ProductCart {
   name: string;
   price: number;
   quantity: number;
-  qty: number;
-  image: string;
-
+  product_name: string;
+  product_price: number;
+  product_imageurl: string;
 }
 
 

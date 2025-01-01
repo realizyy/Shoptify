@@ -24,7 +24,7 @@
   }
 </script>
 
-<header class="bg-white shadow-lg sticky top-0 z-50 transition-opacity duration-500">
+<header class="bg-white shadow-lg sticky top-0 z-50 transition-opacity duration-500 rounded-b-lg">
   <div class="container mx-auto px-4 py-4 flex justify-between items-center">
     <div class="flex items-center space-x-4">
       <a href="/" class="text-2xl font-bold text-gray-800">Shoptify</a>
