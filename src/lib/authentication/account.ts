@@ -17,17 +17,15 @@ import bcrypt from 'bcrypt';
 
 export const create = async (username: string, password: string): Promise<User | undefined> => {
   console.log('creating user .. ');
-  const firstName = faker.person.firstName();
-  const lastName = faker.person.lastName();
-  const fullname = faker.person.fullName({ firstName, lastName });
+  const fullname = faker.person.fullName({ firstName: faker.person.firstName(), lastName: faker.person.lastName() });
   const role = 'user';
   const hashedPassword = await bcrypt.hash(password, 10);
-  console.log('username: ', username, 'password: ', password, '-', hashedPassword, 'fullname: ', fullname);
+  console.log('username: ', username, 'password: ', password, '-', hashedPassword, 'fullname: ', fullname, 'role: ', role);
   try {
     const { rows } = await pool.query(
       `
       INSERT INTO users (username, password, fullname, role)
-      VALUES ($1, $2, $3, 'user')
+      VALUES ($1, $2, $3, $4)
       RETURNING *
       `,
       [username, hashedPassword, fullname, role]
@@ -35,8 +33,8 @@ export const create = async (username: string, password: string): Promise<User |
     const { id } = rows[0];
     console.log('user created');
     return { id, username, fullname, role };
-  } catch {
-    console.log('failed to create user');
+  } catch (error) {
+    console.log('failed to create user', error);
   }
 }
 
