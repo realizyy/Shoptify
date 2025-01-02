@@ -12,7 +12,7 @@
 <ParaglideJS {i18n}>
   <Header />
   <Toaster position="top-center" />
-  <main class="flex flex-col items-center justify-center min-h-screen w-full bg-slate-400">
+  <main class="flex flex-col items-center justify-center min-h-screen w-full bg-gray-100">
     <div class="w-full">
       {@render children()}
     </div>

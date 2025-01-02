@@ -6,7 +6,7 @@
 
 <div class="flex flex-col items-center space-y-5 w-full mb-6">
   <Hero />
-  <div class="bg-gray-100 w-full py-10">
+  <div class="bg-gray-300 w-full py-10">
     <div class="container mx-auto">
       <h2 id="best-product" class="text-3xl font-bold">Our Best Products</h2>
       <!-- <p>
