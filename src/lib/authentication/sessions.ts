@@ -20,5 +20,6 @@ export const isLoggedIn = (cookies: Cookies) => {
   const token = cookies.get(SESSION_COOKIE_NAME);
   if (!token) return null;
   const user = verifyToken(token);
+  console.log('Verified user:', user);
   return user;
 };

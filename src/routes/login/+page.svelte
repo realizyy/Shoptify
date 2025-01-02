@@ -10,7 +10,7 @@
 
 <div class="flex items-center justify-center min-h-screen bg-gray-100 w-full">
   <div class="flex flex-col md:flex-row items-center justify-center space-y-5 md:space-y-0 md:space-x-10">
-    <div class="max-w-md w-full">
+    <div class="max-w-xl w-full">
       <img src="./undraw_remotely_2j6y.svg" alt="Illustration" class="w-full h-auto object-cover object-center rounded-lg">
     </div>
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">

@@ -2,6 +2,7 @@ export interface User {
   id: string;
   username: string;
   fullname: string;
+  role: string;
 }
 
 export interface Product {

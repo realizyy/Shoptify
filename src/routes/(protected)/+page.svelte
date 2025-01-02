@@ -1,7 +1,23 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import { toast } from 'svelte-5-french-toast';
   import Hero from '../../components/hero.svelte';
   export let data: PageData;
+
+  async function addToCart(productId: string) {
+    const response = await fetch('/api/cart', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ productId })
+    });
+    if (response.ok) {
+      toast.success('Product added to cart');
+    } else {
+      toast.error('Failed to add product, cause: ' + response.statusText);
+    }
+  }
 </script>
 
 <div class="flex flex-col items-center space-y-5 w-full mb-6">
@@ -9,11 +25,13 @@
   <div class="bg-gray-300 w-full py-10">
     <div class="container mx-auto">
       <h2 id="best-product" class="text-3xl font-bold">Our Best Products</h2>
-      <!-- <p>
+      <p>
+        User Informations<br>
         ID: {data.data.user?.id ?? 'null'}<br>
         Name: {data.data.user?.fullname ?? 'null'}<br>
         Username: {data.data.user?.username ?? 'null'}<br>
-      </p> -->
+        Role: {data.data.user?.role ?? 'null'}<br>
+      </p>
     </div>
   </div>
 
@@ -21,9 +39,9 @@
     {#each data.product as products}
       <div class="bg-white rounded-lg shadow-md p-5">
         <img src={products.imageurl} alt={products.name} class="w-auto object-cover" />
-        <h3 class="text-xl font-bold mt-3">{products.name}</h3>
+        <h3 class="text-xl font-bold mt-3">{products.name} [{products.id}]</h3>
         <p class="text-gray-600 mt-1">Rp. {Intl.NumberFormat('id-ID').format(products.price)}</p>
-        <button class="bg-[#6c63ff] text-white px-4 py-2 rounded-full mt-3 hover:bg-purple-600 transition duration-300">
+        <button on:click={() => addToCart(products.id)} class="bg-[#6c63ff] text-white px-4 py-2 rounded-full mt-3 hover:bg-purple-600 transition duration-300">
           Add to Cart
         </button>
       </div>

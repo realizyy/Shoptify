@@ -12,9 +12,10 @@ const verify = (payload: string, opt?: VerifyOptions) => {
 
 export const createToken = (user: User) => {
   return sign({
+    id: user.id,
     sub: user.username,
     fullname: user.fullname,
-    id: user.id
+    role: user.role
   });
 };
 
@@ -22,9 +23,10 @@ export const verifyToken = (token: string): User | null => {
   try {
     const decoded = verify(token) as User & { sub: string, id: string };
     return {
+      id: decoded.id,
       username: decoded.sub,
       fullname: decoded.fullname,
-      id: decoded.id
+      role: decoded.role
     };
   } catch {
     return null;
@@ -35,9 +37,10 @@ export const refreshToken = (token: string): string | null => {
   try {
     const decoded = verify(token) as User & { sub: string, id: string };
     return createToken({
+      id: decoded.id,
       username: decoded.sub,
       fullname: decoded.fullname,
-      id: decoded.id
+      role: decoded.role
     });
   } catch {
     return null;
