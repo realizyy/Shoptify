@@ -5,7 +5,6 @@
   let showDropdown = false;
 
   function handlerCart() {
-    // condition if not logged in
     window.location.href = '/cart';
   }
 
@@ -15,6 +14,23 @@
 
   function closeDropdown() {
     showDropdown = false;
+  }
+
+  function profile() {
+    toast.error("Profile page is not available yet");
+  }
+
+  async function logout() {
+    const response = await fetch('/api/logout', {
+      method: 'POST',
+      credentials: 'same-origin'
+    });
+    if (response.ok) {
+      toast("Logged out successfully");
+      window.location.href = '/login';
+    } else {
+      toast.error("Failed to logout, " + response.statusText);
+    }
   }
 </script>
 
@@ -38,8 +54,8 @@
         {#if showDropdown}
           <div class="absolute top-12 right-0 w-48 bg-white bg-opacity-80 shadow-lg rounded-lg z-50">
             <ul class="py-2">
-              <li class="px-4 py-2 hover:bg-gray-100">Profile</li>
-              <li class="px-4 py-2 hover:bg-gray-100">Logout</li>
+              <button onclick={profile} class="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">Profile</button>
+              <button onclick="{logout}" class="w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">Logout</button>
             </ul>
           </div>
         {/if}
