@@ -18,23 +18,43 @@ const auth = (async ({ event, resolve }) => {
   if (event.route.id?.startsWith('/(protected)')) {
     errorMessage.set(null);
     if (!token || !jwt.verifyToken(token)) {
-      redirect(302, '/login');
+      return redirect(302, '/login');
     }
 
-    if (!jwt.verifyToken(token)) {
+    const user = jwt.verifyToken(token);
+    if (!user) {
       errorMessage.set('You need to login again.');
-      redirect(302, '/login');
+      return redirect(302, '/login');
     }
     setUserLocals(token, event);
+
+    // Redirect admin users to /dashboard/admin if they are not already there, except for /api/logout
+    if (user.role === 'admin' && event.url.pathname !== '/dashboard/admin' && 
+      !event.url.pathname.startsWith('/dashboard') && 
+      event.url.pathname !== '/api/logout' &&
+      event.url.pathname !== '/api/product') {
+      return redirect(302, '/dashboard/admin');
+    }
+
+    // Redirect non-admin users to /
+    if (user.role !== 'admin' && event.url.pathname === '/dashboard/admin') {
+      return redirect(302, '/');
+    }
+
   } else if (event.url.pathname === '/login') {
     if (!token) {
       errorMessage.set(null);
       return await resolve(event);
     }
-    if (jwt.verifyToken(token)) {
+    const user = jwt.verifyToken(token);
+    if (user) {
       errorMessage.set(null);
       setUserLocals(token, event);
-      redirect(302, '/');
+      if (user.role === 'admin') {
+        return redirect(302, '/dashboard/admin');
+      } else {
+        return redirect(302, '/');
+      }
     }
   }
 
