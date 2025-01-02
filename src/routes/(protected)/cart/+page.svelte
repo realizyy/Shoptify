@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { PageData } from './$types';
+    import { onMount } from 'svelte';
     export let data: PageData;
 
     function incrementQuantity(index: number) {
@@ -25,6 +26,43 @@
             data.carts.push(newCartItem);
         }
     }
+
+    async function checkout() {
+        const orderId = `ORDER-${Date.now()}`;
+        const grossAmount = data.carts.reduce((acc, item) => acc + (item.product_price * item.quantity), 0);
+        const customerDetails = {
+            first_name: 'John',
+            last_name: 'Doe',
+            email: 'john.doe@example.com',
+            phone: '08123456789'
+        };
+
+        const response = await fetch('/api/payment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                orderId,
+                grossAmount,
+                customerDetails
+            })
+        });
+
+        const transaction = await response.json();
+        if (transaction.token) {
+            // snap.pay(transaction.token);
+        } else {
+            console.error('Failed to create transaction:', transaction);
+        }
+    }
+
+    onMount(() => {
+        const script = document.createElement('script');
+        script.src = 'https://app.sandbox.midtrans.com/snap/snap.js';
+        script.setAttribute('data-client-key', 'YOUR_CLIENT_KEY');
+        document.body.appendChild(script);
+    });
 </script>
 
 <div class="container mx-auto px-4 py-8">
@@ -56,11 +94,11 @@
         <span class="font-semibold">Rp {Intl.NumberFormat('id-ID').format(data.carts.reduce((acc, item) => acc + (item.product_price * item.quantity), 0))}</span>
     </div>
     <div class="flex justify-end mt-4">
-        <button class="bg-[#6c63ff] text-white px-4 py-2 rounded-full hover:bg-purple-600 transition duration-300">Checkout</button>
+        <button on:click={checkout} class="bg-[#6c63ff] text-white px-4 py-2 rounded-full hover:bg-purple-600 transition duration-300">Checkout</button>
     </div>
 
-    <!--Modal Prompt delete item-->
-    <!-- <div class="fixed inset-0 z-10 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden" id="modal">
+    <!-- Modal Prompt delete item-->
+    <div class="fixed inset-0 z-10 flex items-center justify-center bg-gray-900 bg-opacity-50 hidden" id="modal">
         <div class="bg-white p-4 rounded-lg w-1/3">
             <p>Are you sure you want to delete this item?</p>
             <div class="flex justify-end mt-4 gap-x-1">
@@ -69,5 +107,4 @@
             </div>
         </div>
     </div>
-     -->
 </div>
