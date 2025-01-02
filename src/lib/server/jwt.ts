@@ -13,16 +13,18 @@ const verify = (payload: string, opt?: VerifyOptions) => {
 export const createToken = (user: User) => {
   return sign({
     sub: user.username,
-    fullname: user.fullname
+    fullname: user.fullname,
+    id: user.id
   });
 };
 
 export const verifyToken = (token: string): User | null => {
   try {
-    const decoded = verify(token) as User & { sub: string };
+    const decoded = verify(token) as User & { sub: string, id: string };
     return {
       username: decoded.sub,
-      fullname: decoded.fullname
+      fullname: decoded.fullname,
+      id: decoded.id
     };
   } catch {
     return null;
@@ -31,10 +33,11 @@ export const verifyToken = (token: string): User | null => {
 
 export const refreshToken = (token: string): string | null => {
   try {
-    const decoded = verify(token) as User & { sub: string };
+    const decoded = verify(token) as User & { sub: string, id: string };
     return createToken({
       username: decoded.sub,
-      fullname: decoded.fullname
+      fullname: decoded.fullname,
+      id: decoded.id
     });
   } catch {
     return null;

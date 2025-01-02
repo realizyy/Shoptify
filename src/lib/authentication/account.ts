@@ -23,15 +23,17 @@ export const create = async (username: string, password: string): Promise<User |
   const hashedPassword = await bcrypt.hash(password, 10);
   console.log('username: ', username, 'password: ', password, '-', hashedPassword, 'fullname: ', fullname);
   try {
-    await pool.query(
+    const { rows } = await pool.query(
       `
       INSERT INTO users (username, password, fullname)
       VALUES ($1, $2, $3)
+      RETURNING id
       `,
       [username, hashedPassword, fullname]
     );
+    const { id } = rows[0];
     console.log('user created');
-    return { username, fullname };
+    return { id, username, fullname };
   } catch {
     console.log('failed to create user');
   }
@@ -48,7 +50,7 @@ export const getUser = async (username: string, password: string): Promise<User 
     if (rows.length === 0) return undefined;
     const user = rows[0];
     const match = await bcrypt.compare(password, user.password);
-    if (match) return { username: user.username, fullname: user.fullname };
+    if (match) return { id: user.id, username: user.username, fullname: user.fullname };
     return undefined;
   } catch {
     return undefined;

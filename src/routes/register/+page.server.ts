@@ -12,7 +12,6 @@ export const actions: Actions = {
     if (user) {
       throw redirect(302, '/login');
     } else {
-      console.log('Failed to register user');  
       return { message: 'Failed to register user' };
     }
   }

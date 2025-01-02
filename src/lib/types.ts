@@ -1,12 +1,7 @@
 export interface User {
+  id: string;
   username: string;
   fullname: string;
-}
-
-export interface Survey {
-  id: string;
-  name: string;
-  description: string;
 }
 
 export interface Product {
@@ -25,20 +20,4 @@ export interface ProductCart {
   product_name: string;
   product_price: number;
   product_imageurl: string;
-}
-
-
-export interface Answer {
-  id: number;
-  answer: string;
-}
-
-export interface QuestionRaw {
-  question: string;
-  answers: string[];
-}
-
-export interface Question {
-  question: string;
-  answers: Answer[];
 }

@@ -1,5 +1,6 @@
 import { COOKIE_OPTIONS, SESSION_COOKIE_NAME } from '$lib/constants';
 import type { Cookies } from '@sveltejs/kit';
+import { verifyToken } from '$lib/server/jwt';
 
 export const get = (cookies: Cookies) => {
   const cookie = cookies.get(SESSION_COOKIE_NAME);
@@ -13,4 +14,11 @@ export const set = (value: string, cookies: Cookies) => {
 
 export const del = (cookies: Cookies) => {
   cookies.delete(SESSION_COOKIE_NAME, COOKIE_OPTIONS);
+};
+
+export const isLoggedIn = (cookies: Cookies) => {
+  const token = cookies.get(SESSION_COOKIE_NAME);
+  if (!token) return null;
+  const user = verifyToken(token);
+  return user;
 };
