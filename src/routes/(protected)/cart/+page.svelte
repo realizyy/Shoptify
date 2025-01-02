@@ -1,29 +1,6 @@
 <script lang="ts">
     import type { PageData } from './$types';
     export let data: PageData;
-  let cartItems = [
-    {
-        id: 1,
-        name: "The Weekend Boot Beige",
-        price: 2000000,
-        image: "https://thesusoutdoors.com/cdn/shop/files/sustainable-hiking-boot-beige_8e962baf-3a3e-4037-a15a-0d254d3b8e1a.png?v=1686559402&width=200",
-        quantity: 1,
-    },
-    {
-        id: 2,
-        name: "The Weekend Boot Black",
-        price: 4500000,
-        image: "https://thesusoutdoors.com/cdn/shop/files/sustainable-hiking-boot-beige_8e962baf-3a3e-4037-a15a-0d254d3b8e1a.png?v=1686559402&width=200",
-        quantity: 1,
-    },
-    {
-        id: 3,
-        name: "The Weekend Boot Brown",
-        price: 7100000,
-        image: "https://thesusoutdoors.com/cdn/shop/files/sustainable-hiking-boot-beige_8e962baf-3a3e-4037-a15a-0d254d3b8e1a.png?v=1686559402&width=200",
-        quantity: 1,
-    },
-  ];
 </script>
 
 <div class="container mx-auto px-4 py-8">

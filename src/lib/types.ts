@@ -14,8 +14,8 @@ export interface Product {
 
 export interface ProductCart {
   id: string;
-  name: string;
-  price: number;
+  user_id: string;
+  product_id: string;
   quantity: number;
   product_name: string;
   product_price: number;
