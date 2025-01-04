@@ -8,7 +8,7 @@ export const addCart = async (user_id: string, product_id: string) => {
             VALUES ($1, $2, 1)
             RETURNING *
         `, [user_id, product_id]);
-        console.log('result.rows :', result.rows);
+        console.log('Adding item to cart, result.rows :', result.rows);
         return result.rows[0] as ProductCart;
     } catch (error) {
         console.error('Error adding cart :', error);

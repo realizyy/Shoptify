@@ -26,3 +26,29 @@ export const POST = (async ({ request, cookies }) => {
   return json(newCartItem);
 }) satisfies RequestHandler;
 
+export const PUT = (async ({ request, cookies }) => {
+  const user = isLoggedIn(cookies);
+  if (!user) {
+    return json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { id, quantity } = await request.json();
+  console.log('User :', user.id, 'trying to update cart item :', id, 'with quantity :', quantity);
+  const updatedCartItem = await db.updateCarts(user.id, id, quantity);
+
+  return json(updatedCartItem);
+}) satisfies RequestHandler;
+
+export const DELETE = (async ({ request, cookies }) => {
+  const user = isLoggedIn(cookies);
+  if (!user) {
+    return json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  const { id } = await request.json();
+  console.log('User :', user.id, 'trying to delete cart item :', id);
+  const deletedCartItem = await db.deleteCarts(user.id, id);
+
+  return json(deletedCartItem);
+}) satisfies RequestHandler;
+

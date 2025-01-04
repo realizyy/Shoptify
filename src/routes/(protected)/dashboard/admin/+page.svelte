@@ -3,6 +3,7 @@
   import { toast } from 'svelte-5-french-toast';
   export let data: PageData;
 </script>
+
 <div class="container mx-auto px-4 py-8">
     <div class="flex flex-col md:flex-row md:justify-between md:items-center">
         <h2 class="text-3xl font-bold">Your Products</h2>
@@ -28,4 +29,7 @@
             <p>No products available.</p>
         {/if}
     </div>
+
+    <!--Modal Edit Product-->
+    <!--Modal Delete Product-->
 </div>
