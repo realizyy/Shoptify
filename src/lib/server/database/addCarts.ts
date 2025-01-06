@@ -1,7 +1,7 @@
 import type { ProductCart } from '$types';
 import { pool } from './connection';
 
-export const addCart = async (user_id: string, product_id: string) => {
+export const addCarts = async (user_id: string, product_id: string) => {
     try {
         const result = await pool.query(`
             INSERT INTO carts (user_id, product_id, quantity)

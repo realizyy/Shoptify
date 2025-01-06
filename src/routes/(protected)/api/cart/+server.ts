@@ -21,7 +21,7 @@ export const POST = (async ({ request, cookies }) => {
   }
 
   const { productId } = await request.json();
-  const newCartItem = await db.addCart(user.id, productId);
+  const newCartItem = await db.addCarts(user.id, productId);
 
   return json(newCartItem);
 }) satisfies RequestHandler;

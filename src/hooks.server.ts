@@ -32,7 +32,9 @@ const auth = (async ({ event, resolve }) => {
     if (user.role === 'admin' && event.url.pathname !== '/dashboard/admin' && 
       !event.url.pathname.startsWith('/dashboard') && 
       event.url.pathname !== '/api/logout' &&
-      event.url.pathname !== '/api/product') {
+      event.url.pathname !== '/api/product' &&
+      event.url.pathname !== '/api/order'
+    ) {
       return redirect(302, '/dashboard/admin');
     }
 

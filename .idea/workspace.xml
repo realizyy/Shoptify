@@ -5,24 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="845b9cb1-745f-4c2c-81b1-3b3ec88d37fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/data/create_shoptify.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/data/create_shoptify.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/server/database/addCarts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/database/addCarts.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/server/database/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/database/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/server/database/updateCarts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/server/database/updateCarts.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/types.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(protected)/api/cart/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(protected)/api/cart/+server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(protected)/api/payment/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(protected)/api/payment/+server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/(protected)/cart/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(protected)/cart/+page.svelte" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/(protected)/api/product/+server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(protected)/api/product/+server.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/(protected)/dashboard/admin/+page.svelte" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/(protected)/dashboard/admin/+page.svelte" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="sidebarAdmin" />
+        <option value="+page" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <hideBySeverity>
+      <option value="11" />
+      <option value="12" />
+      <option value="13" />
+      <option value="14" />
+      <option value="15" />
+      <option value="16" />
+    </hideBySeverity>
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -33,21 +54,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Dev/Shoptify",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "io.github.pandier.intellijdiscordrp.settings.DiscordSettingsConfigurable",
-    "ts.external.directory.path": "D:\\Dev\\Shoptify\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Dev/Shoptify&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;D:\\Dev\\Shoptify\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;io.github.pandier.intellijdiscordrp.settings.DiscordSettingsConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Dev\\Shoptify\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -64,7 +86,9 @@
       <option name="presentableId" value="Default" />
       <updated>1736019787083</updated>
       <workItem from="1736019790082" duration="216000" />
-      <workItem from="1736020057494" duration="2031000" />
+      <workItem from="1736020057494" duration="4658000" />
+      <workItem from="1736075854063" duration="16451000" />
+      <workItem from="1736150023559" duration="16163000" />
     </task>
     <servers />
   </component>
